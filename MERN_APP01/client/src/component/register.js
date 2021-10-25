@@ -41,7 +41,7 @@ function Register(){
         .then((res)=>{
             history.push('/login')
         })
-        .catch(()=>{alert('invalid cradentials ')})
+        .catch((err)=>{alert('invalid cradentials')})
     }
     return(
         <div className="row">

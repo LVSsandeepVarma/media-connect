@@ -62,6 +62,14 @@ router.get('/postslist/:id',async function(req,res){
 router.post('/register',async function(req,res){
     console.log('register')
     const password=req.body.password
+    const name=req.body.name
+    const email=req.body.email
+    const dbeamil=await Usersdb.findOne({email:email})
+    const dbname=await Usersdb.findOne({email:name})
+    if(dbeamil || dbname ){
+
+        return res.sendStatus(420)
+    }
     console.log(password,password.length)
     if (password.length<6){
         return res.sendStatus(419)
@@ -71,7 +79,7 @@ router.post('/register',async function(req,res){
             console.log(err)
             return res.sendStatus(500)
         }
-
+    
     await Usersdb.create({
         name:req.body.name,
         email:req.body.email,
