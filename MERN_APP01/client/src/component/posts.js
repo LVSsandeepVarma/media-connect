@@ -54,7 +54,7 @@ import logo from './images/logo.png'
                                     img={value.img} 
                                     likes={value.likes}
                                     comments={value.comments}
-                                    // date={value.date}
+                                    date={value.date}
                             />
                             
                             </div>
