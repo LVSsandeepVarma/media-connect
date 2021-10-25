@@ -6,7 +6,7 @@ import heart from './images/heart.png'
 
 function Posts(props){
     // console.log(props.comments[0])
-    console.log(props.date)
+    console.log(props.date.slice(3,15))
     const history=useHistory()
     const [likes,setLikes]=useState(props.likes)
     const [active,setActive]=useState(true)
@@ -106,7 +106,7 @@ function Posts(props){
             <div className="miniH">
                     <i className="fa fa-heart" style={{  "fontSize":"20px","color":`${color}`}}   onClick={handleClick}/>
                     <i style={{"font-size":"20px","paddingLeft":"2.5%"}} className='fa fa-paper-plane'></i> 
-                    <p style={{"paddingLeft":"370px","paddingTop":"10px"}}>{props.date}</p>
+                    <p style={{"paddingLeft":"370px","paddingTop":"10px"}}>{props.date.slice(3,15)}</p>
             </div>
             <small style={{"paddingLeft":"25px"}}>{likes} likes</small> 
             <footer style={{"paddingLeft":"25px"}}>

@@ -7,7 +7,7 @@ var PostsSchema=new mongoose.Schema({
     userId:{type:String},
     username:{type:String},
     comments:[{name:{type:String}, comment:{type:String} }],
-    // date:{type:String, default:new Date()}
+    date:{type:String, default:new Date()}
 })
 const Postsdb=mongoose.model('postsdb',PostsSchema)
 module.exports=Postsdb
