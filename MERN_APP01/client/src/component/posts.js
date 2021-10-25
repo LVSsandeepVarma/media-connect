@@ -4,11 +4,13 @@ import Post from './postslist'
 import cors from 'cors'
 import { useParams } from 'react-router'
 import './posts.css'
+import cam from './images/cam.png'
+import logo from './images/logo.png'
 
-cors({
+// cors({
     
-    exposedHeaders:{'Access-Control-Allow-Origin':'*'} 
-  })
+//     exposedHeaders:{'Access-Control-Allow-Origin':'*'} 
+//   })
 
   function Posts(){
     const [post,setPost]=useState([])
@@ -30,16 +32,20 @@ cors({
     
     },[])
         return(
-            <div className="body">
-                <h1 className="h1" > <i className="fa fa-handshake-o"></i>InstaClone </h1>
+            <div style={{"background":"white"}}>
+                <nav className="header_navigation" style={{"marginBottom":"8px"}}>
+                <header className="mainheader" >
+                    <a href={`/create/${id}`}><img src={cam} alt="img not found" style={{"fontSize":"45px","color":"black","float":"right","width":"max-content" }}/></a>
+                    <h1  style={{"color":"#006238"}} > <img src={logo} style={{"color":"#006238"}}/>InstaClone </h1>
+                    <hr style={{"width":"100%","margin-bottom":"25px","position":"fixed"}}></hr>
+                </header>
+                </nav>
+            <div className="Body">
                 <div className="postsform">
                 <form action={`/create/${id}`} >
-                <button className="btn btn-success fa fa-plus-square add"  type="submit">Add</button>
-                    
-                    
                     {Object.values(post).reverse().map((value)=>{
                         return(
-                            <div className="content">        
+                            <div className="content" style={{"margin-left":"auto","margin-right":"auto","width":"40%","margin-top":"5%"}} >        
                             <Post  id={value._id}
                                     username={value.username}
                                     userId={id}
@@ -48,7 +54,9 @@ cors({
                                     img={value.img} 
                                     likes={value.likes}
                                     comments={value.comments}
+                                    // date={value.date}
                             />
+                            
                             </div>
 
                             
@@ -56,6 +64,7 @@ cors({
                     })}
                 </form>
                 </div>
+            </div>
             </div>
         )
     

@@ -1,10 +1,12 @@
 import React, { useState } from "react"
 import axios from 'axios'
 import { useHistory } from "react-router"
-// import './posts.css'
+import './posts.css'
+import heart from './images/heart.png'
 
 function Posts(props){
-    console.log(props.comments[0])
+    // console.log(props.comments[0])
+    console.log(props.date)
     const history=useHistory()
     const [likes,setLikes]=useState(props.likes)
     const [active,setActive]=useState(true)
@@ -85,24 +87,29 @@ function Posts(props){
         })
     }
     return(
-    <div>
-        <form >
+    <div >
+        <form className="justify-content-md-center" style={{"border":" 1px solid", "width":"100%","height":"100%","display":"inline-block","marginTop":"70px"}} >
+            <nav className="navbar-light">
+            <header className="miniH" >
+                <div style={{"width":"100%"}}>    
+                    <b><h3>{props.username}</h3></b>
+                    <p style={{"color":"#707070"}}>{props.location}</p>
+                </div>
+                <div>
+                    <i className='fa fa-ellipsis-h'  style={{"paddingRight":"10px"}}></i>
+                </div>
+            </header>
+            </nav>
             <div>
-                <b><h2 style={{'color':'yellow'}} >{props.username}</h2></b>
+                <img src={"http://localhost:9000/"+props.img}  style={{"width":"100%","height":"40vh" }} alt="img not found"/>
             </div>
-            
-            <div>
-               <h4 style={{'color':"lightyellow"}}>{props.location}</h4>
+            <div className="miniH">
+                    <i className="fa fa-heart" style={{  "fontSize":"20px","color":`${color}`}}   onClick={handleClick}/>
+                    <i style={{"font-size":"20px","paddingLeft":"2.5%"}} className='fa fa-paper-plane'></i> 
+                    <p style={{"paddingLeft":"370px","paddingTop":"10px"}}>{props.date}</p>
             </div>
-            <div>
-                <img src={props.img}  style={{"width":"30vw","height":"auto" }} alt="img not found"/>
-            </div>
-            
-            <div>
-            <i className="fa fa-heart" style={{"font-size":"36px;","color":`${color}`}}   onClick={handleClick}></i>
-            <small>{likes}likes</small> 
-            {/* <i className="fa fa-paper-plane" style={{"font-size":"15px"}}></i>                */}
-            </div>
+            <small style={{"paddingLeft":"25px"}}>{likes} likes</small> 
+            <footer style={{"paddingLeft":"25px"}}>
             <div>
                 <h4>{props.PostName}</h4>
             </div>
@@ -111,7 +118,7 @@ function Posts(props){
                     {Object.values(props.comments).map((val)=>{
                         return(
                             <div>
-                                <p stylle={{"color":"khaki"}} ><b style={{"color":"black"}}>{val.name}</b> : {val.comment}</p>
+                                <p><b>{val.name}</b> : {val.comment}</p>
                             </div>
                         )
                     })}
@@ -119,13 +126,15 @@ function Posts(props){
             </div>
             {/* <form> */}
                 <div>
-                <input type="text" placeholder="comment........" name="comment"  onChange={handleComment} class="btn btn-outline-dark Input" ></input>
+                <input type="text" placeholder="comment........" name="comment"  onChange={handleComment} className="btn btn-outline-dark Input" ></input>
                 <button  type="submit" onClick={handleSubmit} className="btn btn-outline-dark Post"> Post</button>
                 </div>
             {/* </form> */}
+            </footer>
             <div>
-                <button className="btn btn-outline-dark  fa fa-edit update " type="button" onClick={submit}>Update</button>
-                <button className="btn btn-outline-dark fa fa-trash  delete " type="button" onClick={handleDelete}>Delete</button>
+            
+                <button className="btn btn-outline-dark  fa fa-edit update "style={{"color":"green"}}  type="button" onClick={submit}>Update</button>
+                <button className="btn btn-outline-dark fa fa-trash  delete " style={{"float":"right", "color":"red"}} type="button" onClick={handleDelete}>Delete</button>
             </div>
         </form> 
         

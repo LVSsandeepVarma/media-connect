@@ -13,9 +13,11 @@ import Update from './component/update'
 import './App.css';
 
 function App() {
-  
+  const handleChange=(e)=>{
+    console.log(e.target.files[0])
+  }
   return (
-    <div className="body">
+    <div>
     <Router>
       <Switch>
         <Route exact path="/" component={Register}/>

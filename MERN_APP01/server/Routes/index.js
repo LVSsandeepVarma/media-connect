@@ -4,10 +4,22 @@ const Postsdb=require('../models/posts')
 const Usersdb=require('../models/users')
 const bcrypt=require("bcrypt")
 var jwt = require('jsonwebtoken')
+const multer= require("multer")
+const fs =require('fs')
+const path=require('path')
 
 const secret='secret'
 
-
+const multerStorage = multer.diskStorage({
+    destination: (req, file, cb) => {
+      cb(null, "public/files");
+    },
+    filename: (req, file, cb) => {
+        cb(null, file.fieldname + '-' + Date.now())
+    //   cb(null, Date.now()+'--'+file.originalname);
+    },
+  });
+const upload=multer({storage:multerStorage})
 
 
 router.patch('/likes/:id',async function(req,res){
@@ -96,20 +108,23 @@ router.post('/login',async function(req,res){
     })
 })
 
-router.post('/createpost',async function(req,res){
-    // console.log("body: ",req.body)
+router.post('/createpost',upload.single("image"),async function(req,res,next){
+
+    console.log("hello",req.file)
+    var imagePath = req.file.path.replace("public", "");
+    console.log(imagePath)
     console.log(req.body.PostName)
     const name=await Usersdb.findOne({_id:req.body.userid})
     await Postsdb.create({
-        PostName:req.body.PostName,
-        location:req.body.location,
-        img:req.body.img,
-
-        likes:0,
-        userId:req.body.userid,
-        username:name.name
-    })
-    res.sendStatus(201)
+         PostName:req.body.PostName,
+         location:req.body.location,
+         img:imagePath,
+         likes:0,
+         userId:req.body.userid,
+         username:name.name
+        
+     })
+        res.sendStatus(201);
     
 })
 
@@ -153,11 +168,15 @@ router.post('/verify',async function(req,res){
 
 
 
-router.post('/update',async function(req,res){
+router.post('/update',upload.single("image"),async function(req,res){
     console.log('server')
     const id=req.body.id
     const postid=req.body.postid
     const name=req.body.PostName
+    console.log("hello",req.file)
+    console.log(req.file)
+    var imagePath = req.file.path.replace("public", "");
+    console.log(imagePath)
     console.log(id,name,postid)
     const data=await Postsdb.findOne({_id:postid})
     console.log(data.userId,id)
@@ -165,7 +184,7 @@ router.post('/update',async function(req,res){
         await Postsdb.updateOne({_id:postid},{
             PostName:req.body.PostName,
             location:req.body.location,
-            img:req.body.img
+            img:imagePath
         })
         res.sendStatus(201)    
     }

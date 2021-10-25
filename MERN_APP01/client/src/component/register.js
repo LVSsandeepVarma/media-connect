@@ -2,6 +2,7 @@ import React,{useState} from 'react'
 import axios from 'axios'
 import {useHistory} from 'react-router'
 import './register.css'
+import image from '../component/images/landing.png'
 
 
 function Register(){
@@ -43,33 +44,40 @@ function Register(){
         .catch(()=>{alert('invalid cradentials ')})
     }
     return(
-        <div className="body">
-            <h1 ><i className="fa fa-handshake-o"></i>InstaClone </h1>
-            <h3>connecting people... </h3>
-            <div className="form">
-            <form onSubmit={handleSubmit}>
-                <div>
-                    <label><b>Username</b></label>
-                    <input className="input" type="text" onChange={changeName} placeholder="name to be displayed  " / >
-                </div>
-                <div>
-                    <label><b>Email</b></label>
-                    <input className="input" type="email" onChange={changeEmail}  placeholder="email...." />
-                </div>
-                <div>
-                    <label><b>password</b></label>
-                    <input className="input" type="password" onChange={changePassword} placeholder="********"/>
-                </div>
-                <div>
-                    <button className="btn btn-success" type="submit">Register</button>
-                    <div>
-                        <small>Already a user?</small>
-                        <input className="btn btn-success  button" type="button" value="Login" onClick={handleLogin} />
-                    </div>
-                </div>
-            </form>
+        <div className="row">
+            <div className="col-md-5">
+                <img src={image} className="image" alt="img not found" />
             </div>
-        </div>
+            <div className="col-md-5  ">
+                    <form className="forms" onSubmit={handleSubmit}>
+                        <div class="form-outline mb-4">
+                            <label className="form-label" for="form1">Username</label>
+                            <input type="text" id="form1" className="form-control"  onChange={changeName}/>
+
+                        </div>
+                        <div className="form-outline mb-4">
+                            <label className="form-label" for="feild2">Email address</label>
+
+
+
+                            <input type="email" id="feild2" className="form-control" onChange={changeEmail}/>
+                            
+                        </div>
+                        <div className="form-outline mb-4">
+                            <label className="form-label" for="feild3">Password</label>
+                            <input type="password" id="feild3" className="form-control" onChange={changePassword}/>
+                            
+                        </div>
+                        <div>
+                            <button className="btn btn-primary btn-block" style={{"width":"100%","marginBottom":"5px"}} type="submit">Register</button>
+                        </div>
+                        <div>
+                            <small>Already a user?</small>
+                            <input className="btn btn-primary btn-block  button" type="button" value="Login" onClick={handleLogin} />
+                        </div>
+                    </form>
+                </div>
+            </div>
     )
 }
 export default Register

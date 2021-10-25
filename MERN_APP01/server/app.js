@@ -1,5 +1,5 @@
 const express=require('express')
-
+const path=require('path')
 const cors=require('cors')
 const bodyparser=require("body-parser")
 const mongoose= require('mongoose')
@@ -10,7 +10,7 @@ app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');
     next();
   });
-
+app.use(express.static(`${__dirname}/public`));
 mongoose.connect("mongodb://localhost/db")
 
 app.use(cors({
