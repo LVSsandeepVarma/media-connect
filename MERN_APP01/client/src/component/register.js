@@ -64,16 +64,16 @@ function Register(){
                             
                         </div>
                         <div className="form-outline mb-4">
-                            <label className="form-label" for="feild3">Password</label>
+                            <label className="form-label col-md-3" forid="feild3">Password</label>
                             <input type="password" id="feild3" className="form-control" onChange={changePassword}/>
                             
                         </div>
                         <div>
                             <button className="btn btn-primary btn-block" style={{"width":"100%","marginBottom":"5px"}} type="submit">Register</button>
                         </div>
-                        <div>
-                            <small>Already a user?</small>
-                            <input className="btn btn-primary btn-block  button" type="button" value="Login" onClick={handleLogin} />
+                        <div style={{"display":"flex","justifyContent":"center","alignContent":"center"}}>
+                            <small className="col-md-5" style={{"marginTop":"5px"}}>Already a user?</small>
+                            <input className="btn btn-primary btn-block  col--md-5 button" type="button" style={{"marginLeft":"5px","marginBottom":"3px"}} value="Login" onClick={handleLogin} />
                         </div>
                     </form>
                 </div>
