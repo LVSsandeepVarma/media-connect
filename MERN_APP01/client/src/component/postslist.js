@@ -126,7 +126,7 @@ function Posts(props){
             </div>
             {/* <form> */}
                 <div>
-                <input type="text" placeholder="comment........" name="comment"  onChange={handleComment} className="btn btn-outline-dark Input" ></input>
+                <input style={{"width":"35%","margin":"1%"}} type="text" placeholder="comment........" name="comment"  onChange={handleComment} className="btn btn-outline-dark Input" ></input>
                 <button  type="submit" onClick={handleSubmit} className="btn btn-outline-dark Post"> Post</button>
                 </div>
             {/* </form> */}

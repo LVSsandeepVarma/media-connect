@@ -48,7 +48,7 @@ function Register(){
             <div className="col-md-5">
                 <img src={image} className="image" alt="img not found" />
             </div>
-            <div className="col-md-5  ">
+            <div className="col-md-5 ">
                     <form className="forms" onSubmit={handleSubmit}>
                         <div class="form-outline mb-4">
                             <label className="form-label" for="form1">Username</label>
@@ -69,11 +69,11 @@ function Register(){
                             
                         </div>
                         <div>
-                            <button className="btn btn-primary btn-block" style={{"width":"100%","marginBottom":"5px"}} type="submit">Register</button>
+                            <button className="btn btn-primary btn-block" style={{"width":"95%","marginBottom":"5%" ,"marginLeft":"2.5%"}} type="submit">Register</button>
                         </div>
                         <div style={{"display":"flex","justifyContent":"center","alignContent":"center"}}>
                             <small className="col-md-5" style={{"marginTop":"5px"}}>Already a user?</small>
-                            <input className="btn btn-primary btn-block  col--md-5 button" type="button" style={{"marginLeft":"5px","marginBottom":"3px"}} value="Login" onClick={handleLogin} />
+                            <input className="btn btn-primary btn-block  col--md-5 button" type="button" style={{"width":"35%","marginLeft":"5px","marginBottom":"3px"}} value="Login" onClick={handleLogin} />
                         </div>
                     </form>
                 </div>

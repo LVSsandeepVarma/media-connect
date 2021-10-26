@@ -128,6 +128,7 @@ router.post('/createpost',upload.single("image"),async function(req,res,next){
          location:req.body.location,
          img:imagePath,
          likes:0,
+         date:Date.now(),
          userId:req.body.userid,
          username:name.name
         
@@ -192,7 +193,8 @@ router.post('/update',upload.single("image"),async function(req,res){
         await Postsdb.updateOne({_id:postid},{
             PostName:req.body.PostName,
             location:req.body.location,
-            img:imagePath
+            img:imagePath,
+            date:Date.now()
         })
         res.sendStatus(201)    
     }

@@ -43,7 +43,7 @@ function Login(){
     return(
         <div className="row">
             <div className="col-md-5">
-                <img src={image} className="image" alt="img not found" />
+                <img src={image} style={{"width":"75%","height":"75%"}} className="image" alt="img not found" />
             </div>
             <div className="col-md-5  ">
                     <form className="forms" onSubmit={handleSubmit}>
@@ -59,7 +59,7 @@ function Login(){
                             
                         </div>
                         <div>
-                            <button className="btn btn-primary btn-block" style={{"width":"100%","marginBottom":"5px"}} type="submit">Login</button>
+                            <button className="btn btn-primary btn-block" style={{"width":"95%","marginBottom":"5%" ,"marginLeft":"2.5%"}} type="submit">Login</button>
                         </div>
                     </form>
                 </div>
