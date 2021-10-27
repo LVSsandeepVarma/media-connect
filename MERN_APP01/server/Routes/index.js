@@ -128,7 +128,7 @@ router.post('/createpost',upload.single("image"),async function(req,res,next){
          location:req.body.location,
          img:imagePath,
          likes:0,
-         date:Date.now(),
+         date:new Date(),
          userId:req.body.userid,
          username:name.name
         
@@ -194,7 +194,7 @@ router.post('/update',upload.single("image"),async function(req,res){
             PostName:req.body.PostName,
             location:req.body.location,
             img:imagePath,
-            date:Date.now()
+            date:new Date()
         })
         res.sendStatus(201)    
     }
